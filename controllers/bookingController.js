@@ -2,7 +2,7 @@
 
 const Booking = require("../models/Booking");
 const Mentee = require("../models/Mentee-model");
-const { createZoomMeeting } = require("../services/zoomService");
+const { createZoomMeeting } = require("../services/Zoomservice");
 const Razorpay = require("razorpay");
 
 // Initialize Razorpay instance
