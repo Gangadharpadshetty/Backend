@@ -11,7 +11,7 @@ const errorMiddleware = require('./middleware/error_middleware');
 
 // CORS options
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'http://localhost:5173', // ✅ You might change this to your frontend Render URL in production
   methods: 'GET,POST,PUT,DELETE,OPTIONS,PATCH,HEAD',
   credentials: true,
 };
@@ -32,11 +32,12 @@ app.use(errorMiddleware);
 // Connect to the database and start the server
 connectDB()
   .then(() => {
-    app.listen(8000, () => {
-      console.log('Server is running at http://localhost:8000');
+    const PORT = process.env.PORT || 8000;
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Server is running at http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
-    console.error('Error connecting to the database:', error.message);
+    console.error('❌ Error connecting to the database:', error.message);
     process.exit(1);
   });
