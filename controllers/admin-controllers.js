@@ -4,7 +4,7 @@ const Contact = require("../models/contact_model");
 // *-------------------------------
 //* getAllUsers Logic 📝
 // *-------------------------------
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find({}, { password: 0 });
     console.log(users);
@@ -21,7 +21,7 @@ const getAllUsers = async (req, res) => {
 //* single user Logic 📝
 // *-------------------------------
 
-const getUserById = async (req, res) => {
+const getUserById = async (req, res, next) => {
   try {
     const id = req.params.id;
     const data = await User.findOne({ _id: id }, { password: 0 });
@@ -35,7 +35,7 @@ const getUserById = async (req, res) => {
 //* user update Logic 📝
 // *-------------------------------
 
-const updateUserById = async (req, res) => {
+const updateUserById = async (req, res, next) => {
   try {
     const id = req.params.id;
     const updatedUserData = req.body;
@@ -56,7 +56,7 @@ const updateUserById = async (req, res) => {
 //* user delete Logic 📝
 // *-------------------------------
 
-const deleteUserById = async (req, res) => {
+const deleteUserById = async (req, res, next) => {
   try {
     const id = req.params.id;
     await User.deleteOne({ _id: id });
@@ -69,7 +69,7 @@ const deleteUserById = async (req, res) => {
 // *-------------------------------
 //* getAllContacts Logic 📝
 // *-------------------------------
-const getAllContacts = async (req, res) => {
+const getAllContacts = async (req, res, next) => {
   try {
     const contacts = await Contact.find();
     console.log(contacts);
@@ -86,7 +86,7 @@ const getAllContacts = async (req, res) => {
 //* contacts delete Logic 📝
 // *-------------------------------
 
-const deleteContactById = async (req, res) => {
+const deleteContactById = async (req, res, next) => {
   try {
     const id = req.params.id;
     await Contact.deleteOne({ _id: id });

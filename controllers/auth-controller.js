@@ -1,4 +1,4 @@
-const user = require("../models/user_model");
+const User = require("../models/user_model");
 const bcrypt = require("bcryptjs"); // Corrected module name
 
 /**
@@ -32,7 +32,7 @@ const Register = async (req, res) => {
         // Check if user with the same email exists
       /* The code snippet you provided is checking if a user with the same email already exists in the
       database before creating a new user. Here's a breakdown of what it does: */
-        const userExist = await user.findOne({ email: email });
+        const userExist = await User.findOne({ email: email });
         if (userExist) {
             return res.status(409).json('User already exists');
         } 
@@ -65,7 +65,7 @@ const Register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const userExist = await user.findOne({ email: email });
+        const userExist = await User.findOne({ email: email });
         if (!userExist) {
             return res.status(401).json("Invalid Email");
         }

@@ -30,18 +30,19 @@ const Schema = mongoose.Schema({
 /* The `Schema.pre("save", async function () { ... })` middleware function in the Mongoose schema is a
 pre-save hook that is executed before saving a user document to the database. Here's a breakdown of
 what this function is doing: */
-Schema.pre("save", async function () {
-    const Userr = this;
-    if (!Userr.isModified("password")) {
-        next();
+Schema.pre("save", async function (next) {
+    const userDoc = this;
+    if (!userDoc.isModified("password")) {
+        return next();
     }
 
     try {
         const saltround = await bcrypt.genSalt(10);  // generate a salt and round of hashing
-        const hash_password = await bcrypt.hash(Userr.password, saltround);
-        Userr.password = hash_password.toString();
+        const hash_password = await bcrypt.hash(userDoc.password, saltround);
+        userDoc.password = hash_password.toString();
+        next();
     } catch (error) {
-        next(error.message);
+        next(error);
     }
 });
 

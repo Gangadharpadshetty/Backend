@@ -71,8 +71,8 @@ exports.bookSession = async (req, res) => {
 
     // Optional: Verify Razorpay payment signature here for added security
 
-    // Create a Zoom meeting
-    const meeting = await createZoomMeeting(
+    // Create a Zoom meeting and get join URL
+    const zoomLink = await createZoomMeeting(
       `Session with ${mentee.name}`,
       new Date(selectedTime)
     );
@@ -83,7 +83,7 @@ exports.bookSession = async (req, res) => {
       userName,
       userEmail,
       selectedTime,
-      zoomLink: meeting.join_url,
+      zoomLink,
       paymentId: razorpayPaymentId,
       orderId: razorpayOrderId,
     });
@@ -92,7 +92,7 @@ exports.bookSession = async (req, res) => {
 
     res.status(201).json({
       message: "Session booked successfully",
-      zoomLink: meeting.join_url,
+      zoomLink,
     });
   } catch (error) {
     console.error("Error booking session:", error);

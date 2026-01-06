@@ -7,6 +7,8 @@ const bookingSchema = new Schema(
     userEmail: { type: String, required: true },
     selectedTime: { type: Date, required: true },
     zoomLink: { type: String },
+    paymentId: { type: String },
+    orderId: { type: String },
   },
   { timestamps: true }
 );

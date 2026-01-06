@@ -36,6 +36,4 @@ const createZoomMeeting = async (topic, startTime) => {
   return response.data.join_url;
 };
 
-module.exports = { createZoomMeeting }; const handleConnect = (id) => {
-  navigate(`/booking/${id}`);
-};
+module.exports = { createZoomMeeting };
