@@ -11,8 +11,8 @@ const errorMiddleware = require('./middleware/error_middleware');
 
 // CORS options
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://getpalced.onrender.com',
-    'https://getplacd-15si.onrender.com',
+  origin: ['http://localhost:5173', 'https://getpalced.onrender.com', 'https://getplaced1.onrender.com',
+    'https://getplacd-15si.onrender.com','https://gplacd.onrender.com/'
     'https://gplacd.onrender.com'
   ], // ✅ You might change this to your frontend Render URL in production
   methods: 'GET,POST,PUT,DELETE,OPTIONS,PATCH,HEAD',

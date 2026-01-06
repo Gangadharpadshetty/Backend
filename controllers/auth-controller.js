@@ -90,14 +90,14 @@ const login = async (req, res) => {
 ////////////////////////////////////////////////////////////////
 //user logic to sent the user data
 //................................................................
-const User = async (req, res, next) => 
-    {
-    try {
-        const userData = req.user;
-        console.log("userdata");
-        res.status(200).json(userData);
-    } catch (error) {
-        console.log("error from the root",error);
-    }
-}
+// const User = async (req, res, next) => 
+//     {
+//     try {
+//         const userData = req.user;
+//         console.log("userdata");
+//         res.status(200).json(userData);
+//     } catch (error) {
+//         console.log("error from the root",error);
+//     }
+// }
 module.exports = { Register, home, login,User };
