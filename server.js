@@ -12,7 +12,7 @@ const errorMiddleware = require('./middleware/error_middleware');
 // CORS options
 const corsOptions = {
   origin: ['http://localhost:5173', 'https://getpalced.onrender.com', 'https://getplaced1.onrender.com',
-    'https://getplacd-15si.onrender.com','https://gplacd.onrender.com/'
+    'https://getplacd-15si.onrender.com','https://gplacd.onrender.com/',
     'https://gplacd.onrender.com'
   ], // ✅ You might change this to your frontend Render URL in production
   methods: 'GET,POST,PUT,DELETE,OPTIONS,PATCH,HEAD',
@@ -31,13 +31,12 @@ app.use('/api/book', bookingRoutes);
 
 // Error handling middleware
 app.use(errorMiddleware);
-
 // Connect to the database and start the server
 connectDB()
   .then(() => {
     const PORT = process.env.PORT || 8000;
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`✅ Server is running at http://0.0.0.0:${PORT}`);
+    app.listen(PORT, 'localhost', () => {
+      console.log(`✅ Server is running at http://localhost:${PORT}`);
     });
   })
   .catch((error) => {
